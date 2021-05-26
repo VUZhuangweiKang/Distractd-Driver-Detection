@@ -43,7 +43,8 @@ class MyProducer(object):
             rand_img = random.sample(images, 1)[0]  # select an image from the testing dataset randomly
             img_path = self.args.data_path + "/" + rand_img
             send_data = normal(img_path)
-            encoded_data = pickle.dumps(send_data)
+            raw_msg = {'img': send_data, 'img_name': rand_img}
+            encoded_data = pickle.dumps(raw_msg)
             producer.send(topic=self.args.topic, value=encoded_data)
             if self.args.sync:
                 producer.flush()
@@ -90,4 +91,3 @@ if __name__ == '__main__':
     throughput = np.array(throughput).mean(axis=0).reshape(1, -1)
     np.savetxt('latency.log', latency, fmt='%.3f', delimiter=',')
     np.savetxt('throughput.log', throughput, fmt='%.3f', delimiter=',')
-
