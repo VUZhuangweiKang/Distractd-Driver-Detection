@@ -34,7 +34,8 @@ class MyProducer(object):
                                  linger_ms=self.args.linger_ms,
                                  compression_type=compression_type,
                                  buffer_memory=self.args.buffer_memory,
-                                 acks=self.args.acks)
+                                 acks=self.args.acks,
+                                 metrics_num_samples=100)
 
         start = time.time()
         images = os.listdir(self.args.data_path)

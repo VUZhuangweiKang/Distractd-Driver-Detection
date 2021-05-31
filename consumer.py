@@ -4,6 +4,8 @@ import time
 from kafka import KafkaConsumer
 import utils
 import pickle
+from threading import Thread
+from collections import deque
 from predict import *
 
 INTERVAL = 1
@@ -18,6 +20,7 @@ class MyConsumer(object):
         self.last_timestamp = None
 
         self.model = load_model()
+        self.img_queue = deque(maxlen=100)
 
     def capture_metrics(self, consumer_metrics, recv_time, send_time):
         try:
@@ -38,6 +41,7 @@ class MyConsumer(object):
                                  client_id=self.args.client_id,
                                  group_id='group-1',
                                  auto_offset_reset='latest',
+                                 metrics_num_samples=100,
                                  consumer_timeout_ms=1000 * self.args.execution_time,
                                  bootstrap_servers=[self.args.bootstrap_servers],
                                  fetch_max_wait_ms=self.args.fetch_wait_max_ms,
@@ -49,6 +53,9 @@ class MyConsumer(object):
         # move offset to the end
         consumer.poll()
         consumer.seek_to_end()
+
+        predict_thread = Thread(target=self.bg_predict, daemon=True, name='image prediction')
+        predict_thread.start()
         while time.time() - start < self.args.execution_time:
             message_batch = consumer.poll()
             poll_time = time.time()
@@ -57,8 +64,17 @@ class MyConsumer(object):
                     raw_msg = pickle.loads(message.value)
                     if not self.last_timestamp or (time.time() - self.last_timestamp > INTERVAL):
                         self.capture_metrics(consumer.metrics(), poll_time, message.timestamp)
-                    predict(self.model, img_matrix=raw_msg['img'])
+                    self.img_queue.append(raw_msg['img'])
         consumer.close()
+
+    def bg_predict(self):
+        while True:
+            try:
+                if len(self.img_queue) > 0:
+                    img = self.img_queue.popleft()
+                    predict(self.model, img_matrix=img)
+            except Exception as ex:
+                print(ex)
 
     def get_latency(self):
         rec_size = len(self.latency_samples)
