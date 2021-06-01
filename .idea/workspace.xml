@@ -2,23 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c2ecd3f3-fed7-4d14-b6d8-dc7952959bc8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/consumer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/driver_imgs_list.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/driver_imgs_list.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/imgs/readme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/imgs/readme.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/imgs/test/readme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/imgs/test/readme.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/imgs/train/readme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/imgs/train/readme.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/sample_submission.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/sample_submission.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/log" beforeDir="false" afterPath="$PROJECT_DIR$/log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/predict.py" beforeDir="false" afterPath="$PROJECT_DIR$/predict.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/producer.py" beforeDir="false" afterPath="$PROJECT_DIR$/producer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/saved_models/readme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/saved_models/readme.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/saved_models/weights_best_vanilla.hdf5" beforeDir="false" afterPath="$PROJECT_DIR$/saved_models/weights_best_vanilla.hdf5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +24,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -54,7 +41,8 @@
       <workItem from="1622083874374" duration="476000" />
       <workItem from="1622499558455" duration="3521000" />
       <workItem from="1622503945174" duration="1132000" />
-      <workItem from="1622509336983" duration="467000" />
+      <workItem from="1622509336983" duration="613000" />
+      <workItem from="1622515003255" duration="3367000" />
     </task>
     <servers />
   </component>

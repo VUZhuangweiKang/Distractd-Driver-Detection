@@ -35,7 +35,7 @@ class MyProducer(object):
                                  compression_type=compression_type,
                                  buffer_memory=self.args.buffer_memory,
                                  acks=self.args.acks,
-                                 metrics_num_samples=100)
+                                 metrics_num_samples=self.args.metrics_num_samples)
 
         start = time.time()
         images = os.listdir(self.args.data_path)
@@ -72,10 +72,11 @@ if __name__ == '__main__':
     parser.add_argument('--execution_time', type=int, default=120)
     parser.add_argument('--sync', action='store_true', default=False, help='run a synchronous producer')
     parser.add_argument('--acks', type=int, default=1, choices=[0, 1], help='acknowledgement from broker')
+    parser.add_argument('--metrics_num_samples', type=int, default=2)
 
     parser.add_argument('--batch_size', type=int, default=16384)
     parser.add_argument('--linger_ms', type=int, default=0)
-    parser.add_argument('--compression_type', type=str, default='none', choices=['none', 'gzip', 'snappy', 'lz4'])
+    parser.add_argument('--compression_type', type=str, default='none', choices=['none', 'gzip', 'snappy', 'lz4', 'zstd'])
     parser.add_argument('--buffer_memory', type=int, default=33554432)
     args = parser.parse_args()
 

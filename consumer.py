@@ -41,7 +41,7 @@ class MyConsumer(object):
                                  client_id=self.args.client_id,
                                  group_id='group-1',
                                  auto_offset_reset='latest',
-                                 metrics_num_samples=100,
+                                 metrics_num_samples=self.args.metrics_num_samples,
                                  consumer_timeout_ms=1000 * self.args.execution_time,
                                  bootstrap_servers=[self.args.bootstrap_servers],
                                  fetch_max_wait_ms=self.args.fetch_wait_max_ms,
@@ -95,6 +95,7 @@ if __name__ == '__main__':
     parser.add_argument('--bootstrap_servers', type=str, default='localhost:9092')
     parser.add_argument('--topic', type=str, default='distracted_driver_detection')
     parser.add_argument('--execution_time', type=int, default=120)
+    parser.add_argument('--metrics_num_samples', type=int, default=2)
     parser.add_argument('--local_buffer_size', type=int, default=1000, help='local queue for buffering messages')
 
     parser.add_argument('--fetch_wait_max_ms', type=int, default=500)
