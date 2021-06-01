@@ -20,7 +20,7 @@ class MyConsumer(object):
         self.last_timestamp = None
 
         self.model = load_model()
-        self.img_queue = deque(maxlen=100)
+        self.img_queue = deque(maxlen=self.args.local_buffer_size)
 
     def capture_metrics(self, consumer_metrics, recv_time, send_time):
         try:
@@ -95,6 +95,7 @@ if __name__ == '__main__':
     parser.add_argument('--bootstrap_servers', type=str, default='localhost:9092')
     parser.add_argument('--topic', type=str, default='distracted_driver_detection')
     parser.add_argument('--execution_time', type=int, default=120)
+    parser.add_argument('--local_buffer_size', type=int, default=1000, help='local queue for buffering messages')
 
     parser.add_argument('--fetch_wait_max_ms', type=int, default=500)
     parser.add_argument('--max_partition_fetch_bytes', type=int, default=1048576)
